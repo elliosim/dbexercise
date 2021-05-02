@@ -2,10 +2,17 @@ package com.example.dbexercise.controller;
 
 import com.opencsv.bean.CsvBindByName;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class NaceItem {
 
+    @Id
     @CsvBindByName
-    private int order;
+    private long order;
 
     @CsvBindByName
     private int level;
@@ -82,11 +89,11 @@ public class NaceItem {
         this.referenceToISICRev4 = referenceToISICRev4;
     }
 
-    public int getOrder() {
+    public long getOrder() {
         return order;
     }
 
-    public void setOrder(int order) {
+    public void setOrder(long order) {
         this.order = order;
     }
 
