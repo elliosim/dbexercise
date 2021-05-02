@@ -2,15 +2,17 @@ package com.example.dbexercise.controller;
 
 import com.opencsv.bean.CsvBindByName;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "nace_items")
 public class NaceItem {
 
     @Id
+    @Column(name="nace_order")
     @CsvBindByName
     private long order;
 
@@ -26,15 +28,18 @@ public class NaceItem {
     @CsvBindByName
     private String description;
 
+    @Column(length = 100000)
     @CsvBindByName(column = "This item includes")
     private String thisItemIncludes;
 
+    @Column(length = 100000)
     @CsvBindByName(column = "This item also includes")
     private String thisItemAlsoIncludes;
 
     @CsvBindByName
     private String rulings;
 
+    @Column(length = 100000)
     @CsvBindByName(column = "This item excludes")
     private String thisItemExcludes;
 
