@@ -7,6 +7,7 @@
 
 ```
 create database nace;
+create user 'nace'@'localhost';
 grant all privileges on nace.* to 'nace'@'localhost';
 ```
 
@@ -27,6 +28,7 @@ http://localhost:8080/swagger-ui.html
 * Confirm the data has been added to the database:
 
 ```
+use nace;
 select count(*) from nace_items;
 +----------+
 | count(*) |
@@ -40,3 +42,5 @@ select count(*) from nace_items;
 ```
 http://localhost:8080/api/getNaceDetails/398481
 ```
+
+* Note: data is purged from database on application shutdown
