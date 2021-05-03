@@ -11,8 +11,25 @@ import javax.persistence.Table;
 @Table(name = "nace_items")
 public class NaceItem {
 
+    public NaceItem() {}
+
+    public NaceItem(long order, int level, String code, String parent,
+                    String description, String thisItemIncludes, String thisItemAlsoIncludes,
+                    String rulings, String thisItemExcludes, String referenceToISICRev4) {
+        this.order = order;
+        this.level = level;
+        this.code = code;
+        this.parent = parent;
+        this.description = description;
+        this.thisItemIncludes = thisItemIncludes;
+        this.thisItemAlsoIncludes = thisItemAlsoIncludes;
+        this.rulings = rulings;
+        this.thisItemExcludes = thisItemExcludes;
+        this.referenceToISICRev4 = referenceToISICRev4;
+    }
+
     @Id
-    @Column(name="nace_order")
+    @Column(name="order_id")
     @CsvBindByName
     private long order;
 
@@ -37,6 +54,7 @@ public class NaceItem {
     private String thisItemAlsoIncludes;
 
     @CsvBindByName
+    @Column(length = 100000)
     private String rulings;
 
     @Column(length = 100000)

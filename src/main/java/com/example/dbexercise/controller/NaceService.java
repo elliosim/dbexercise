@@ -12,8 +12,10 @@ public class NaceService {
     private NaceRepository repository;
 
     public void saveNaceItems(List<NaceItem> naceItems) {
-        System.out.println("Saving all items");
-        System.out.println(naceItems);
         repository.saveAll(naceItems);
+    }
+
+    public NaceItem getNaceDetails(long orderId) {
+        return repository.findById(orderId).get();
     }
 }
