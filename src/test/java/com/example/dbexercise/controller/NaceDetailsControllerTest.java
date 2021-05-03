@@ -11,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -29,7 +31,6 @@ public class NaceDetailsControllerTest {
 
     @Test
     public void testPutNaceDetailsAcceptsAFile() throws Exception {
-
         MockMultipartFile file = new MockMultipartFile(
                 "file",
                 "NACE_REV2_TEST.csv",
@@ -39,17 +40,22 @@ public class NaceDetailsControllerTest {
                 MockMvcRequestBuilders.multipart("/api/putNaceDetails").file(file)
         ).andDo(print()).andExpect(
                 status().isOk());
+
+        verify(service).saveNaceItems(anyList());
     }
 
     @Test
     public void shouldGetNaceDetails() throws Exception {
-
         when(service.getNaceDetails(398481L)).thenReturn(getNaceItem());
 
         mockMvc.perform(get("/api/getNaceDetails/398481"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.order", is(398481)))
-                .andExpect(jsonPath("$.description", is("AGRICULTURE, FORESTRY AND FISHING"))
+                .andExpect(jsonPath("$.level", is(1)))
+                .andExpect(jsonPath("$.code", is("A")))
+                .andExpect(jsonPath("$.description", is("AGRICULTURE, FORESTRY AND FISHING")))
+                .andExpect(jsonPath("$.thisItemIncludes", is("This section includes the exploitation of")))
+                .andExpect(jsonPath("$.referenceToISICRev4", is("A"))
         );
     }
 

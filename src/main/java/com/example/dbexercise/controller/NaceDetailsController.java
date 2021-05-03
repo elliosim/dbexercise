@@ -30,7 +30,6 @@ public class NaceDetailsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @GetMapping(value = "/getNaceDetails/{orderId}")
