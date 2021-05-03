@@ -1,5 +1,7 @@
 package com.example.dbexercise.controller;
 
+import com.example.dbexercise.model.NaceItem;
+import com.example.dbexercise.service.NaceService;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

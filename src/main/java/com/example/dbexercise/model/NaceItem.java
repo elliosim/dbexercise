@@ -1,4 +1,4 @@
-package com.example.dbexercise.controller;
+package com.example.dbexercise.model;
 
 import com.opencsv.bean.CsvBindByName;
 

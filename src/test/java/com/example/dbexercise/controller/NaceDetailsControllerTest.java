@@ -1,5 +1,8 @@
 package com.example.dbexercise.controller;
 
+import com.example.dbexercise.controller.NaceDetailsController;
+import com.example.dbexercise.model.NaceItem;
+import com.example.dbexercise.service.NaceService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

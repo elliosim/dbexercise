@@ -1,5 +1,7 @@
-package com.example.dbexercise.controller;
+package com.example.dbexercise.service;
 
+import com.example.dbexercise.model.NaceItem;
+import com.example.dbexercise.repository.NaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
